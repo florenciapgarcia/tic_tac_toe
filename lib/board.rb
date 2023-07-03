@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Board
   attr_accessor :board_positions
 
@@ -16,7 +18,7 @@ class Board
   #   # @@board.each do |position|
   #   #
   #   # end
-  #   puts "           |   |   |   |
+  #   puts "  |   |   |   |
   #          -------------
   #          |   |   |   |
   #          --------------
