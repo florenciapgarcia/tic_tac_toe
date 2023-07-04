@@ -1,27 +1,30 @@
 # frozen_string_literal: true
 
 class Board
-  attr_accessor :board_positions
+  attr_accessor :board_positions, :players_moves
 
   def initialize
     @board_positions = []
+    @players_moves = []
   end
 
   def display
-    # todo - display the board according to the positions in the array
-    @board_positions.each do |position|
-
+    9.times do |i|
+      symbol = board_positions.include?(i) ? symbol_to_display(i) : i
+      if i == 2 || i == 5
+        print "| #{symbol} |\n"
+      elsif i == 8
+        print "| #{symbol} |\n"
+      else
+        print "| #{symbol} "
+      end
     end
   end
 
-  # def display_board
-  #   # @@board.each do |position|
-  #   #
-  #   # end
-  #   puts "  |   |   |   |
-  #          -------------
-  #          |   |   |   |
-  #          --------------
-  #          |   |   |   |"
-  # end
+  private
+
+  def symbol_to_display(position)
+    index = board_positions.find_index(position)
+    !index.nil? && index.even? ? 'X' : 'O'
+  end
 end
