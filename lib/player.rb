@@ -5,6 +5,7 @@ require_relative './board'
 class Player
   attr_accessor :name, :moves
   @@total_players = []
+
   def initialize
     puts 'Please enter your name'
     name = gets.chomp
