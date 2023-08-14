@@ -16,7 +16,6 @@ class TicTacToe
 
   def play_game
     until @game_over
-      @board.display
       Player.total_players.each_with_index do |player, i|
         puts "#{player.name}, please choose a position for your mark"
         position = Integer(gets.chomp)
