@@ -4,7 +4,7 @@ require_relative './player'
 require_relative './board'
 
 class TicTacToe
-  attr_accessor :first, :second, :game_over
+  attr_accessor :game_over
   WINS = [[0, 1, 2], [0, 4, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [2, 4, 6], [3, 4, 5], [6, 7, 8]].freeze
 
   def initialize
@@ -16,6 +16,7 @@ class TicTacToe
 
   def play_game
     until @game_over
+      @board.display
       Player.total_players.each_with_index do |player, i|
         puts "#{player.name}, please choose a position for your mark"
         position = Integer(gets.chomp)
@@ -61,12 +62,10 @@ class TicTacToe
   end
 
   def moves_include_wins?(player_moves)
-    wins_included = false
     if player_moves.size >= 3
       WINS.each do |winning_moves|
-        wins_included = winning_moves == player_moves.sort
+        return true if winning_moves == player_moves.sort
       end
-      wins_included
     end
   end
 end
